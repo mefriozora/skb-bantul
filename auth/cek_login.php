@@ -51,7 +51,7 @@
 		 	}else if ($level == '2') {
 		 		echo "<script>
 				alert('Login Berhasil Sebagai Tutor');
-				window.location.href='../tutor/index.php';
+				window.location.href='../admin/index.php';
 				</script>";
 		 		
 		 	}else if ($level == '3') {

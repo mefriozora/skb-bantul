@@ -51,19 +51,27 @@ include "../config/connection.php";
                 <li class="nav-item">
                   <a href="./index.php" class="nav-link"><i class="fe fe-home"></i> Dashboard</a>
                 </li>
+                <?php if ($_SESSION['level']==1) {?>
                 <li class="nav-item">
                   <a href="pendaftaran.php" class="nav-link"><i class="fe fe-users"></i> Pendaftar</a>
                 </li>
+                <?php }?>
                 <li class="nav-item">
                   <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>Master Data</a>
                   <div class="dropdown-menu dropdown-menu-arrow">
+                  <?php if ($_SESSION['level']==1) {?>
                     <a href="siswa.php" class="dropdown-item ">Siswa Diterima</a>
+                  <?php }?>
                     <a href="siswaaktif.php" class="dropdown-item ">Siswa Aktif</a>
                     <a href="kelas.php" class="dropdown-item ">Kelas</a>
+                    <?php if ($_SESSION['level']==1) {?>
                     <a href="tutor.php" class="dropdown-item ">Tutor</a>
                     <a href="mapel.php" class="dropdown-item ">Mata Pelajaran</a>
+                    <?php }?>
                     <a href="ta.php" class="dropdown-item ">Tahun Ajaran</a>
+                    <?php if ($_SESSION['level']==1) {?>
                     <a href="pengguna.php" class="dropdown-item ">Pengguna</a>
+                    <?php }?>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -72,16 +80,20 @@ include "../config/connection.php";
                 <li class="nav-item">
                   <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-book-open"></i>Nilai</a>
                   <div class="dropdown-menu dropdown-menu-arrow">
+                    <?php if ($_SESSION['level']==2) {?>
                     <a href="nilai.php" class="dropdown-item ">Input Nilai</a>
+                    <?php }?>
                     <a href="data_nilai.php" class="dropdown-item ">Data Nilai</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <a href="jadwal.php" class="nav-link"><i class="fe fe-calendar"></i>Jadwal</a>
                 </li>
+                <?php if ($_SESSION['level']==1) {?>
                 <li class="nav-item">
                   <a href="jadwal.php" class="nav-link"><i class="fe fe-file-text"></i>Laporan</a>
                 </li>
+                <?php }?>
               </ul>
             </div>
           </div>
