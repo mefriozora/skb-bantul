@@ -1,13 +1,15 @@
 <?php
     session_start();
-    if(@$_SESSSION['level']=='1'){
+    if(!isset($_SESSION['level'])){
       echo "<script>
-      alert('Login dulu);
+      alert('Login dulu');
       window.location.href='../auth/login.php';
       </script>";
        }
     include_once "views/main.php";
 ?>
+
+
 
 <div class="my-3 my-md-3">
     <div class="row-deck">
