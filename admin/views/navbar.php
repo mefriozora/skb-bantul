@@ -75,9 +75,6 @@ include "../config/connection.php";
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-trending-up"></i>Kenaikan Kelas</a>
-                </li>
-                <li class="nav-item">
                   <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-book-open"></i>Nilai</a>
                   <div class="dropdown-menu dropdown-menu-arrow">
                     <?php if ($_SESSION['level']==2) {?>
