@@ -61,7 +61,7 @@
                         <tr>
 						  <td><?php echo $no;?></td>
 						  <td class="text-center">
-                            <a href="verifikasi_pendaftar.php?id=<?php echo $h['no_pendaftar'] ?>" " onclick="return confirm('Yakin Merubah Status Verifikasi Data ?')" class="btn btn-secondary btn-sm"><i class="fe fe-check-circle">Verifikasi Status</i></a>
+                            <a href="verifikasi_pendaftar.php?id=<?php echo $h['no_pendaftar'] ?>" " onclick="return confirm('Yakin Ubah Status Pendaftar ?')" class="btn btn-secondary btn-sm"><i class="fe fe-check-circle">Ubah Status</i></a>
                           </td>
                           <td><?php echo $h['status_pendaftar'];?></td>
 						  <td><?php echo $h['no_pendaftar'];?></td>
@@ -90,9 +90,6 @@
 						  <td><?php echo $h['kk'];?></td>
 						  <td><?php echo $h['ijazah_raport'];?></td>
 						  <td><?php echo $h['sk_pindah_sekolah'];?></td>
-					
-						  
-                          
                         </tr>
                         <?php $no++; } ?>
                       </tbody>
