@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Jan 2020 pada 06.37
+-- Generation Time: 20 Jan 2020 pada 09.20
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -107,19 +107,8 @@ INSERT INTO `level` (`level_id`, `level`) VALUES
 
 CREATE TABLE `mapel` (
   `kode_mapel` varchar(11) NOT NULL,
-  `nama_mapel` varchar(30) NOT NULL,
-  `kode_kelas` int(11) NOT NULL,
-  `kode_tutor` varchar(11) NOT NULL
+  `nama_mapel` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `mapel`
---
-
-INSERT INTO `mapel` (`kode_mapel`, `nama_mapel`, `kode_kelas`, `kode_tutor`) VALUES
-('MP01B07', 'IPA', 4, 'T200116B001'),
-('MP01B08', 'IPA', 5, 'T200116B001'),
-('MP01B09', 'IPA', 6, 'T200116B001');
 
 -- --------------------------------------------------------
 
@@ -325,9 +314,7 @@ ALTER TABLE `level`
 -- Indexes for table `mapel`
 --
 ALTER TABLE `mapel`
-  ADD PRIMARY KEY (`kode_mapel`),
-  ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `kode_tutor` (`kode_tutor`);
+  ADD PRIMARY KEY (`kode_mapel`);
 
 --
 -- Indexes for table `nilai`
@@ -422,13 +409,6 @@ ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_ibfk_4` FOREIGN KEY (`kode_ta`) REFERENCES `tahun_ajaran` (`kode_ta`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_ibfk_5` FOREIGN KEY (`kode_tutor`) REFERENCES `tutor` (`kode_tutor`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_ibfk_6` FOREIGN KEY (`kode_mapel`) REFERENCES `mapel` (`kode_mapel`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `mapel`
---
-ALTER TABLE `mapel`
-  ADD CONSTRAINT `mapel_ibfk_1` FOREIGN KEY (`kode_kelas`) REFERENCES `kelas` (`kode_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mapel_ibfk_2` FOREIGN KEY (`kode_tutor`) REFERENCES `tutor` (`kode_tutor`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `nilai`
