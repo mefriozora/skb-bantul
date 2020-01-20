@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Jan 2020 pada 09.20
+-- Generation Time: 20 Jan 2020 pada 09.37
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -21,19 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `skb`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `detail_mapel`
---
-
-CREATE TABLE `detail_mapel` (
-  `id_detail_mapel` int(11) NOT NULL,
-  `kode_kelas` int(11) NOT NULL,
-  `kode_mapel` varchar(11) NOT NULL,
-  `kode_tutor` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -281,14 +268,6 @@ INSERT INTO `user` (`id_user`, `level_id`, `nama`, `username`, `password`) VALUE
 --
 
 --
--- Indexes for table `detail_mapel`
---
-ALTER TABLE `detail_mapel`
-  ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `kode_mapel` (`kode_mapel`),
-  ADD KEY `kode_tutor` (`kode_tutor`);
-
---
 -- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -392,14 +371,6 @@ ALTER TABLE `user`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
-
---
--- Ketidakleluasaan untuk tabel `detail_mapel`
---
-ALTER TABLE `detail_mapel`
-  ADD CONSTRAINT `detail_mapel_ibfk_1` FOREIGN KEY (`kode_kelas`) REFERENCES `kelas` (`kode_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detail_mapel_ibfk_2` FOREIGN KEY (`kode_mapel`) REFERENCES `mapel` (`kode_mapel`),
-  ADD CONSTRAINT `detail_mapel_ibfk_3` FOREIGN KEY (`kode_tutor`) REFERENCES `tutor` (`kode_tutor`);
 
 --
 -- Ketidakleluasaan untuk tabel `jadwal`
