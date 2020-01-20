@@ -66,6 +66,8 @@ include "../config/connection.php";
                     <a href="kelas.php" class="dropdown-item ">Kelas</a>
                     <?php if ($_SESSION['level']==1) {?>
                     <a href="tutor.php" class="dropdown-item ">Tutor</a>
+                    <?php }?>
+                    <?php if ($_SESSION['level']==2 || $_SESSION['level']==1) {?>
                     <a href="mapel.php" class="dropdown-item ">Mata Pelajaran</a>
                     <?php }?>
                     <a href="ta.php" class="dropdown-item ">Tahun Ajaran</a>

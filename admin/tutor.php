@@ -38,6 +38,8 @@ default:
                           <th>Agama</th>
                           <th>No. HP</th>
                           <th>Terdaftar</th>
+                          <th>Mapel Yang Diampu</th>
+                          <th>Kelas Yang Diampu</th>
                           <th>Aksi</th>
                           <th></th>
                         </tr>
@@ -58,6 +60,8 @@ default:
                         <td><?php echo $h['agama'];?></td>
                         <td><?php echo $h['no_hp'];?></td>
                         <td><?php echo $h['tgl_terdaftar'];?></td>
+                        <td><?php echo $h['kode_mapel'];?></td>
+                        <td><?php echo $h['kode_kelas'];?></td>
                   <td class="text-right">
                     <a href="?&act=form_update&id=<?php echo $h['kode_tutor'];?>" class="btn btn-secondary btn-sm"><i class="fe fe-edit"></i></a>
                     <a href='?&act=delete&id=<?php echo $h['kode_tutor'];?>' onClick="return confirm('Yakin data akan dihapus ?')"
@@ -183,6 +187,45 @@ case "form_create";
                     <input name="tanggal_terdaftar" type="date" class="form-control" onkeypress="" placeholder="Tanggal Terdaftar"/>
                   </div>
               </div>
+              <!--<div class="form-group">
+                <label>Mata Pelajaran Yang Diampu</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-user-o"></i>
+                    </div>
+                    <select name="id_mapel" class="form-control">
+                      <option value="" selected>-Pilih-</option>
+                      <?php                        
+                        // $sql = mysqli_query($connect,"SELECT * FROM mapel");
+                        // while($j = mysqli_fetch_array($sql)){
+                        //   echo "
+                        //     <option value='$j[kode_mapel]'>$j[nama_mapel]</option>";
+                        // }
+                      ?>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label>Kelas Yang Diampu</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-user-o"></i>
+                    </div>
+                    <select name="id_kelas" class="form-control">
+                      <option value="" selected>- Pilih-</option>
+                      <?php                        
+                        // $sql = mysqli_query($connect, "SELECT * FROM kelas");
+                        // while($j = mysqli_fetch_array($sql)){
+                        //   if($j['kode_kelas']==$kelas_sesi){
+                        //     echo "<option selected value='$j[kode_kelas]'>$j[kelas]</option>";
+                        //   }else{
+                        //     echo "<option value='$j[kode_kelas]'>$j[kelas]</option>";
+                        //   }
+                        // }
+                      ?>
+                    </select>
+                  </div>
+              </div>-->
               <div class="modal-footer">
                 <button class="btn btn-success" type="submit">
                   Tambah

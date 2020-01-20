@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 Jan 2020 pada 15.06
+-- Generation Time: 20 Jan 2020 pada 06.37
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,6 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `detail_mapel`
+--
+
+CREATE TABLE `detail_mapel` (
+  `id_detail_mapel` int(11) NOT NULL,
+  `kode_kelas` int(11) NOT NULL,
+  `kode_mapel` varchar(11) NOT NULL,
+  `kode_tutor` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jadwal`
 --
 
@@ -39,14 +52,6 @@ CREATE TABLE `jadwal` (
   `jam_selesai` time NOT NULL,
   `kode_tutor` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `jadwal`
---
-
-INSERT INTO `jadwal` (`id_jadwal`, `kode_ta`, `semester`, `kode_kelas`, `hari`, `kode_mapel`, `jam_mulai`, `jam_selesai`, `kode_tutor`) VALUES
-(8, 5, 'Genap', 6, 'Kamis', 'MP01A08', '10:30:00', '12:30:00', 'T200116B001'),
-(10, 2, 'Genap', 7, 'Selasa', 'MP01A08', '16:00:00', '18:30:00', 'T200116A001');
 
 -- --------------------------------------------------------
 
@@ -112,8 +117,9 @@ CREATE TABLE `mapel` (
 --
 
 INSERT INTO `mapel` (`kode_mapel`, `nama_mapel`, `kode_kelas`, `kode_tutor`) VALUES
-('MP01A07', 'IPA', 2, 'T200116A001'),
-('MP01A08', 'Bahasa Indonesia', 1, 'T200116C001');
+('MP01B07', 'IPA', 4, 'T200116B001'),
+('MP01B08', 'IPA', 5, 'T200116B001'),
+('MP01B09', 'IPA', 6, 'T200116B001');
 
 -- --------------------------------------------------------
 
@@ -126,10 +132,11 @@ CREATE TABLE `nilai` (
   `id_siswa` int(11) NOT NULL,
   `kode_kelas` int(11) NOT NULL,
   `kode_ta` int(11) NOT NULL,
-  `kode_mapel` varchar(11) NOT NULL,
   `semester` enum('Ganjil','Genap') NOT NULL,
+  `kode_mapel` varchar(11) NOT NULL,
   `nilai_tugas` varchar(10) NOT NULL,
   `nilai_pts` varchar(10) NOT NULL,
+  `nilai_pas` varchar(10) NOT NULL,
   `nilai_pat` varchar(10) NOT NULL,
   `nilai_akhir` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -204,22 +211,9 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `no_pendaftar`, `nama`, `kelas_diterima`, `kode_kelas`, `kode_ta`, `status_siswa`) VALUES
-(2, 'A202001160001', 'Mefri Andriyanto ', 'Kelas 6 ', 6, 1, 'Tidak Aktif'),
+(2, 'A202001160001', 'Mefri Andriyanto ', 'Kelas 6 ', 4, 1, 'Tidak Aktif'),
 (3, 'B202001160001', 'Mefri Andriyanto ', 'Kelas 7 ', 7, 3, 'Aktif'),
-(4, 'A202001160001', 'Mefri Andriyanto ', 'Kelas 6 ', 0, 0, '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `siswa_kelas`
---
-
-CREATE TABLE `siswa_kelas` (
-  `id_siswa_kelas` int(11) NOT NULL,
-  `no_induk` varchar(12) NOT NULL,
-  `kode_kelas` int(11) NOT NULL,
-  `kode_ta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(4, 'A202001160001', 'Mefri Andriyanto ', 'Kelas 6 ', 3, 2, '');
 
 -- --------------------------------------------------------
 
@@ -298,6 +292,14 @@ INSERT INTO `user` (`id_user`, `level_id`, `nama`, `username`, `password`) VALUE
 --
 
 --
+-- Indexes for table `detail_mapel`
+--
+ALTER TABLE `detail_mapel`
+  ADD KEY `kode_kelas` (`kode_kelas`),
+  ADD KEY `kode_mapel` (`kode_mapel`),
+  ADD KEY `kode_tutor` (`kode_tutor`);
+
+--
 -- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -353,15 +355,6 @@ ALTER TABLE `siswa`
   ADD KEY `kode_ta` (`kode_ta`);
 
 --
--- Indexes for table `siswa_kelas`
---
-ALTER TABLE `siswa_kelas`
-  ADD PRIMARY KEY (`id_siswa_kelas`),
-  ADD KEY `no_induk` (`no_induk`),
-  ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `kode_ta` (`kode_ta`);
-
---
 -- Indexes for table `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
@@ -400,11 +393,6 @@ ALTER TABLE `kelas`
 ALTER TABLE `siswa`
   MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `siswa_kelas`
---
-ALTER TABLE `siswa_kelas`
-  MODIFY `id_siswa_kelas` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
@@ -417,6 +405,14 @@ ALTER TABLE `user`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `detail_mapel`
+--
+ALTER TABLE `detail_mapel`
+  ADD CONSTRAINT `detail_mapel_ibfk_1` FOREIGN KEY (`kode_kelas`) REFERENCES `kelas` (`kode_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detail_mapel_ibfk_2` FOREIGN KEY (`kode_mapel`) REFERENCES `mapel` (`kode_mapel`),
+  ADD CONSTRAINT `detail_mapel_ibfk_3` FOREIGN KEY (`kode_tutor`) REFERENCES `tutor` (`kode_tutor`);
 
 --
 -- Ketidakleluasaan untuk tabel `jadwal`
@@ -442,11 +438,12 @@ ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_3` FOREIGN KEY (`kode_ta`) REFERENCES `tahun_ajaran` (`kode_ta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `siswa_kelas`
+-- Ketidakleluasaan untuk tabel `siswa`
 --
-ALTER TABLE `siswa_kelas`
-  ADD CONSTRAINT `siswa_kelas_ibfk_1` FOREIGN KEY (`no_induk`) REFERENCES `siswa_wb` (`no_induk`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `siswa_kelas_ibfk_2` FOREIGN KEY (`kode_ta`) REFERENCES `tahun_ajaran` (`kode_ta`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `siswa`
+  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`no_pendaftar`) REFERENCES `pendaftar` (`no_pendaftar`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`kode_kelas`) REFERENCES `kelas` (`kode_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `siswa_ibfk_3` FOREIGN KEY (`kode_ta`) REFERENCES `tahun_ajaran` (`kode_ta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user`
