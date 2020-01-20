@@ -31,22 +31,18 @@ default:
                   <th class="w-2">No.</th>
                   <th>Kode Mapel</th>
                   <th>Nama Mapel</th>
-                  <th>Kelas</th>
-                  <th>Nama Tutor</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
               <?php
-              $sql=mysqli_query($connect,"SELECT mapel.kode_mapel, mapel.nama_mapel, kelas.kelas, tutor.nama_tutor FROM mapel LEFT JOIN kelas ON kelas.kode_kelas=mapel.kode_kelas LEFT JOIN tutor ON tutor.kode_tutor=mapel.kode_tutor order by kode_mapel asc");
+              $sql=mysqli_query($connect,"SELECT * FROM mapel ORDER BY kode_mapel ASC");
               $no=1;
               while($h=mysqli_fetch_array($sql)){ ?>
                 <tr>
                   <td><span class="text-muted"><?php echo $no;?></span></td>
                   <td><?php echo $h['kode_mapel'];?></td>
                   <td><?php echo $h['nama_mapel'];?></td>
-                  <td><?php echo $h['kelas'];?></td>
-                  <td><?php echo $h['nama_tutor'];?></td>
                   <td class="text-left">
                     <a href="?&act=form_update&id=<?php echo $h['kode_mapel'];?>" class="btn btn-secondary btn-sm"><i class="fe fe-edit"></i></a>
                     <a href='?&act=delete&id=<?php echo $h['kode_mapel'];?>' onClick="return confirm('Yakin data akan dihapus ?')"
@@ -99,49 +95,10 @@ case "form_create";
                     <input name="mapel" type="text" class="form-control" onkeypress="" placeholder="Mata pelajaran"/>
                   </div>
               </div>
-              <div class="form-group">
-                <label>Kelas</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-user-o"></i>
-                    </div>
-                    <select name="kelas" class="form-control">
-                      <option selected value="">-Pilih Kelas-</option>
-                        <?php
-                        //include "../config/connection.php"; 
-                            $querykelas = mysqli_query($connect,"SELECT * FROM kelas");
-                            while ($datakelas = mysqli_fetch_array($querykelas)){
-                        ?>
-                      <option value="<?php echo $datakelas['kode_kelas'] ?>"><?php echo $datakelas['kelas'] ?>
-                            <?php } ?>
-                      </option>
-                      
-                    </select>
-                  </div>
-              </div>
-              <div class="form-group">
-                <label>Tutor</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-user-o"></i>
-                    </div>
-                    <select name="tutor" class="form-control">
-                      <option selected value="">-Pilih Tutor-</option>
-                        <?php
-                        //include "../config/connection.php"; 
-                            $querytutor = mysqli_query($connect,"SELECT * FROM tutor");
-                            while ($datatutor = mysqli_fetch_array($querytutor)){
-                        ?>
-                      <option value="<?php echo $datatutor['kode_tutor'] ?>"><?php echo $datatutor['nama_tutor'] ?>
-                            <?php } ?>
-                      </option>
-                      
-                    </select>
-                  </div>
               </div>
               <div class="modal-footer">
                 <button class="btn btn-success" type="submit">
-                  Add
+                  Tambah
                 </button>
                 <button type="reset" class="btn btn-danger" onClick="window.location.href='mapel.php';">
                 Cancel
@@ -189,7 +146,7 @@ $h=mysqli_fetch_array($sql);
                     <input name="mapel" type="text" class="form-control" onkeypress="" placeholder="mapel Ajaran" value="<?php echo $h['nama_mapel'];?>"/>                    
                   </div>
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <label>Kelas</label>
                   <div class="input-group">
                     <div class="input-group-addon">
@@ -198,14 +155,14 @@ $h=mysqli_fetch_array($sql);
                     <select name="kelas" class="form-control">
                     <option selected value="">-Pilih Kelas-</option>
                         <?php
-                            $querykelas = mysqli_query($connect,"SELECT * FROM kelas ORDER BY kode_kelas");
-                            while ($datakelas = mysqli_fetch_array($querykelas)){
-                                if($datakelas['kode_kelas']==$h['kode_kelas']){
-                                    echo "<option selected value=$datakelas[kode_kelas]>$datakelas[kelas]</option>";
-                                }else{
-                                    echo "<option value=$datakelas[kode_kelas]>$datakelas[kelas]</option>"; 
-                                }
-                            }
+                            // $querykelas = mysqli_query($connect,"SELECT * FROM kelas ORDER BY kode_kelas");
+                            // while ($datakelas = mysqli_fetch_array($querykelas)){
+                            //     if($datakelas['kode_kelas']==$h['kode_kelas']){
+                            //         echo "<option selected value=$datakelas[kode_kelas]>$datakelas[kelas]</option>";
+                            //     }else{
+                            //         echo "<option value=$datakelas[kode_kelas]>$datakelas[kelas]</option>"; 
+                            //     }
+                            // }
                         ?>    
                       </option>
                     </select>
@@ -220,19 +177,19 @@ $h=mysqli_fetch_array($sql);
                     <select name="tutor" class="form-control">
                       <option selected value="">-Pilih Tutor-</option>
                       <?php
-                            $querytutor = mysqli_query($connect,"SELECT * FROM tutor ORDER BY kode_tutor");
-                            while ($datatutor = mysqli_fetch_array($querytutor)){
-                                if($datatutor['kode_tutor']==$h['kode_tutor']){
-                                    echo "<option selected value=$datatutor[kode_tutor]>$datatutor[nama_tutor]</option>";
-                                }else{
-                                    echo "<option value=$datatutor[kode_tutor]>$datatutor[nama_tutor]</option>"; 
-                                }
-                            }
+                            // $querytutor = mysqli_query($connect,"SELECT * FROM tutor ORDER BY kode_tutor");
+                            // while ($datatutor = mysqli_fetch_array($querytutor)){
+                            //     if($datatutor['kode_tutor']==$h['kode_tutor']){
+                            //         echo "<option selected value=$datatutor[kode_tutor]>$datatutor[nama_tutor]</option>";
+                            //     }else{
+                            //         echo "<option value=$datatutor[kode_tutor]>$datatutor[nama_tutor]</option>"; 
+                            //     }
+                            // }
                         ?>    
                       </option>
                     </select>
                   </div>
-              </div>
+              </div>-->
               <div class="modal-footer">
                 <button class="btn btn-success" type="submit">
                   Update
@@ -254,8 +211,7 @@ $kodemapel=$_POST['kodemapel'];
 //var_dump($kodemapel);
 $mapel=$_POST['mapel'];
 //var_dump($mapel);
-$kelas =$_POST['kelas'];
-$tutor =$_POST['tutor'];
+
 //validasi 1
 //if (empty($kodemapel)){ 
   //echo"<script>alert('Masukkan kode mapel');history.back(-1);</script>";  
@@ -272,7 +228,7 @@ $tutor =$_POST['tutor'];
    echo"<script>alert('Data yang di input sudah ada');history.back(-1);</script>";
    }
    else {
-   $input=mysqli_query($connect,"INSERT INTO `mapel`(`kode_mapel`, `nama_mapel`, `kode_kelas`, `kode_tutor`) VALUES ('$kodemapel','$mapel','$kelas','$tutor')");
+   $input=mysqli_query($connect,"INSERT INTO `mapel`(`kode_mapel`, `nama_mapel`) VALUES ('$kodemapel','$mapel')");
    //var_dump($input); exit();
       if ($input){
         //$_SESSION[status]    = "sukses";
@@ -291,16 +247,12 @@ break;
 case "update";
 $kodemapel=$_POST['kodemapel'];
 $mapel=$_POST['mapel'];
-$kelas =$_POST['kelas'];
-$tutor =$_POST['tutor'];
 $id=$_POST['id'];
 //validasi 1
 if (empty($kodemapel)){ 
   echo"<script>alert('Masukkan kode mapel');history.back(-1);</script>";  
 }elseif (empty($mapel)) {
   echo"<script>alert('Masukkan nama mapel');history.back(-1);</script>";
-}elseif (empty($kelas)) {
-  echo"<script>alert('Pilih Kelas');history.back(-1);</script>";  
   
 }else{
   // validasi 2
@@ -310,7 +262,7 @@ if (empty($kodemapel)){
    //echo"<script>alert('Data yang di input sudah ada');history.back(-1);</script>";
    //}
    //else {
-   $input=mysqli_query($connect,"UPDATE mapel SET kode_mapel='$kodemapel',nama_mapel='$mapel', kode_kelas='$kelas', kode_tutor='$tutor' WHERE kode_mapel='$id'"); 
+   $input=mysqli_query($connect,"UPDATE mapel SET kode_mapel='$kodemapel',nama_mapel='$mapel' WHERE kode_mapel='$id'"); 
       if ($input){
       echo $main_view;
       }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Jan 2020 pada 09.37
+-- Generation Time: 20 Jan 2020 pada 10.17
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -39,6 +39,14 @@ CREATE TABLE `jadwal` (
   `jam_selesai` time NOT NULL,
   `kode_tutor` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `jadwal`
+--
+
+INSERT INTO `jadwal` (`id_jadwal`, `kode_ta`, `semester`, `kode_kelas`, `hari`, `kode_mapel`, `jam_mulai`, `jam_selesai`, `kode_tutor`) VALUES
+(11, 5, 'Ganjil', 5, 'Senin', 'MP01B07', '16:00:00', '18:00:00', 'T200116A001'),
+(12, 5, 'Ganjil', 5, 'Senin', 'MP02B08', '15:30:00', '17:30:00', 'T200116B001');
 
 -- --------------------------------------------------------
 
@@ -96,6 +104,15 @@ CREATE TABLE `mapel` (
   `kode_mapel` varchar(11) NOT NULL,
   `nama_mapel` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `mapel`
+--
+
+INSERT INTO `mapel` (`kode_mapel`, `nama_mapel`) VALUES
+('MP01B07', 'IPA'),
+('MP02B08', 'Bahasa Indonesia'),
+('MP03B09', 'Matematika');
 
 -- --------------------------------------------------------
 
@@ -347,7 +364,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `kelas`
 --
