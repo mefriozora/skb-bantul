@@ -79,7 +79,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-user-o"></i>
                     </div>
-                    <select id="kesetaraan" name="kesetaraan" onchange="tampilkan()" class="form-control">
+                    <select required id="kesetaraan" name="kesetaraan" onchange="tampilkan()" class="form-control">
                       <option selected value="">-Pilih-</option>
                       <option value="A">PAKET A</option>
                       <option value="B">PAKET B</option>
@@ -93,7 +93,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-user-o"></i>
                     </div>
-                    <select name="kelas_setara" id="tampil" class="form-control">
+                    <select required name="kelas_setara" id="tampil" class="form-control">
                     </select>
                   </div>
               </div>
@@ -113,7 +113,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="nama" type="text" class="form-control" onkeypress="" placeholder="Nama"/>
+                    <input required name="nama" type="text" class="form-control" onkeypress="" placeholder="Nama"/>
                   </div>
               </div>
               <div class="form-group">
@@ -122,7 +122,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="nisn" type="text" class="form-control" onkeypress="" placeholder="NISN"/>
+                    <input required name="nisn" type="text" class="form-control" onkeypress="" placeholder="NISN"/>
                   </div>
               </div>
               <div class="form-group">
@@ -131,7 +131,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="tempat_lhr" type="text" class="form-control" onkeypress="" placeholder="Tempat lahir"/>
+                    <input required name="tempat_lhr" type="text" class="form-control" onkeypress="" placeholder="Tempat lahir"/>
                   </div>
               </div>
               <div class="form-group">
@@ -140,7 +140,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="tanggal_lhr" type="date" class="form-control" onkeypress="" placeholder="Tanggal lahir"/>
+                    <input required name="tanggal_lhr" type="date" class="form-control" onkeypress="" placeholder="Tanggal lahir"/>
                   </div>
               </div>
               <div class="form-group">
@@ -149,7 +149,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-user-o"></i>
                     </div>
-                    <select name="agama" class="form-control">
+                    <select required name="agama" class="form-control">
                       <option selected value="">-Pilih-</option>
                       <option value="ISLAM">ISLAM</option>
                       <option value="KRISTEN">KRISTEN</option>
@@ -165,10 +165,10 @@
                     <div class="input-group-addon">
                       <i class="fa fa-user-o"></i>
                     </div>
-                    <select name="jenkel" class="form-control">
+                    <select required name="jenkel" class="form-control">
                       <option selected value="">-Pilih-</option>
-                      <option value="Laki-Laki">Laki - Laki</option>
-                      <option value="Perempuan">Perempuan</option>
+                      <option value="L">Laki - Laki</option>
+                      <option value="P">Perempuan</option>
                     </select>
                   </div>
               </div>
@@ -178,7 +178,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <textarea name="alamat" class="form-control"></textarea>
+                    <textarea required name="alamat" class="form-control"></textarea>
                   </div>
               </div>
               <div class="form-group">
@@ -187,7 +187,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="no_hp" type="text" class="form-control" onkeypress="return isNumber(event)" placeholder="Telp"/>
+                    <input required name="no_hp" type="text" class="form-control" onkeypress="return isNumber(event)" placeholder="Telp"/>
                   </div>
               </div>
               <div>
@@ -208,7 +208,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="asal_sekolah" type="text" class="form-control" onkeypress="" placeholder="Asal Sekolah"/>
+                    <input required name="asal_sekolah" type="text" class="form-control" onkeypress="" placeholder="Asal Sekolah"/>
                   </div>
               </div>
               
@@ -218,7 +218,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <textarea name="alamat_sekolah" class="form-control"></textarea>
+                    <textarea required name="alamat_sekolah" class="form-control"></textarea>
                   </div>
               </div>
           </div>
@@ -240,7 +240,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="nama_ayah" type="text" class="form-control" onkeypress="" placeholder="Nama Ayah"/>
+                    <input required name="nama_ayah" type="text" class="form-control" onkeypress="" placeholder="Nama Ayah"/>
                   </div>
               </div>
               <div class="form-group">
@@ -249,7 +249,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="nama_ibu" type="text" class="form-control" onkeypress="" placeholder="Nama Ibu"/>
+                    <input required name="nama_ibu" type="text" class="form-control" onkeypress="" placeholder="Nama Ibu"/>
                   </div>
               </div>
               <div class="form-group">
@@ -258,7 +258,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="pekerj_ayah" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan Ayah"/>
+                    <input required name="pekerj_ayah" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan Ayah"/>
                   </div>
               </div>
               <div class="form-group">
@@ -267,7 +267,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="pekerj_ibu" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan Ibu"/>
+                    <input required name="pekerj_ibu" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan Ibu"/>
                   </div>
               </div>
               <div class="form-group">
@@ -276,7 +276,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <textarea name="alamat_ortu" class="form-control"></textarea>
+                    <textarea required name="alamat_ortu" class="form-control"></textarea>
                   </div>
               </div>
               <div class="form-group">
@@ -285,7 +285,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="nama_wali" type="text" class="form-control" onkeypress="" placeholder="Nama Wali"/>
+                    <input  name="nama_wali" type="text" class="form-control" onkeypress="" placeholder="Nama Wali"/>
                   </div>
               </div>
               <div class="form-group">
@@ -294,7 +294,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="pekerj_wali" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan"/>
+                    <input  name="pekerj_wali" type="text" class="form-control" onkeypress="" placeholder="Pekerjaan"/>
                   </div>
               </div>
               <div class="form-group">
@@ -303,7 +303,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <textarea name="alamat_wali" class="form-control"></textarea>
+                    <textarea  name="alamat_wali" class="form-control"></textarea>
                   </div>
               </div>
               <div class="form-group">
@@ -312,7 +312,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
                     </div>
-                    <input name="no_hp_ortuwali" type="text" class="form-control" onkeypress="return isNumber(event)" placeholder="Telp"/>
+                    <input required name="no_hp_ortuwali" type="text" class="form-control" onkeypress="return isNumber(event)" placeholder="Telp"/>
                   </div>
               </div>
             </div>
@@ -326,29 +326,38 @@
           </div>
           <div class="modal-body">
               <div class="form-group">
-                <label class="col-form-label">Akta Kelahiran</label>
+                <label class="col-form-label">Scan PDF Akta Kelahiran</label>
                 <div class="input-group" >
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
-                    <input name="fileakta" id="upload" type="file" class="form-control" accept=".pdf">
+                    <input required name="fileakta" id="upload" type="file" class="form-control" accept=".pdf">
                   </div>  
                   </div>
               </div>
               <div class="form-group">
-                <label>Kartu Keluarga (KK)</label>
+                <label>Scan PDF Kartu Keluarga (KK)</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
-                    <input name="filekk" id="upload" type="file" class="form-control" accept=".pdf">
+                    <input  required name="filekk" id="upload" type="file" class="form-control" accept=".pdf">
                   </div>  
                   </div>
               </div>
               <div class="form-group">
-                <label>Ijazah Terakhir Dan Nilai Raport Terakhir</label>
+                <label>Scan PDF Ijazah Terakhir</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
-                    <input name="fileijazah" id="upload" type="file" class="form-control" accept=".pdf">
+                    <input required name="fileijazah" id="upload" type="file" class="form-control" accept=".pdf">
+                  </div>  
+                  </div>
+              </div>
+              <div class="form-group">
+                <label>Scan PDF Nilai Raport Terakhir</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-id-card"></i>
+                    <input required name="filerapot" id="upload" type="file" class="form-control" accept=".pdf">
                   </div>  
                   </div>
               </div>
@@ -357,7 +366,7 @@
                 <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
-                    <input name="file_skpindah" id="upload" type="file" class="form-control" accept=".pdf">
+                    <input required name="file_skpindah" id="upload" type="file" class="form-control" accept=".pdf">
                   </div>  
                   </div>
               </div>
@@ -366,7 +375,7 @@
                 <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-id-card"></i>
-                    <input name="file_foto" id="upload" type="file" class="form-control" accept=".jpg">
+                    <input required name="file_foto" id="upload" type="file" class="form-control" accept=".jpg">
                   </div>  
                   </div>
               </div>

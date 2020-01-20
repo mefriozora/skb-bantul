@@ -45,20 +45,6 @@ if(isset($_POST["daftar"])){
     //var_dump($alamatwali);
     $nohportu_wali  = @$_POST['no_hp_ortuwali'];
     //var_dump($nohportu_wali);
-    $tgldaftar      = date("Ymd");
-    $varakte        = $_FILES["fileakta"]["name"];
-    $varkk          = $_FILES["filekk"]["name"];
-    $varijazah      = $_FILES["fileijazah"]["name"];
-    $varsuratpindah = $_FILES["file_skpindah"]["name"];
-    $varfoto        = $_FILES["file_foto"]["name"];
-
-    move_uploaded_file($_FILES["fileakta"]["tmp_name"],"pendaftar/file_pendaftar/".$_FILES["fileakta"]["name"]);
-    move_uploaded_file($_FILES["filekk"]["tmp_name"],"pendaftar/file_pendaftar/".$_FILES["filekk"]["name"]);
-    move_uploaded_file($_FILES["fileijazah"]["tmp_name"],"pendaftar/file_pendaftar/".$_FILES["fileijazah"]["name"]);
-    move_uploaded_file($_FILES["file_skpindah"]["tmp_name"],"pendaftar/file_pendaftar/".$_FILES["file_skpindah"]["name"]);
-    move_uploaded_file($_FILES["file_foto"]["tmp_name"],"pendaftar/file_pendaftar/".$_FILES["file_foto"]["name"]);
-
-
     $query1 = "SELECT max(no_pendaftar) as maxPENDAFTAR FROM pendaftar where no_pendaftar LIKE '$paketkesetaraan%'";
     $result1 = mysqli_query($connect,$query1);
     $data1 = mysqli_fetch_array($result1);
@@ -69,20 +55,47 @@ if(isset($_POST["daftar"])){
 
     $newID = $paketkesetaraan .$tgldaftar . sprintf("%04s", $noUrut);
 
-    $query2 = "INSERT INTO `pendaftar`(`no_pendaftar`, `nama`, `nisn`, `tempat_lhr`, `tanggal_lhr`, `agama`, `jenkel`, `alamat`, `no_hp`, `tgl_pendaftaran`, `asal_sekolah`, `setara_kelas`, `paket_kesetaraan`, `alamat_sekolah`, `nama_ayah`, `nama_ibu`, `pekerjaan_ayah`, `pekerjaan_ibu`, `alamat_ortu`, `nama_wali`, `pekerjaan_wali`, `alamat_wali`, `no_hp_ortuwali`, `foto`, `status_pendaftar`, `akte`, `kk`, `ijazah_raport`,`sk_pindah_sekolah`) VALUES ('$newID','$namapendaftar','$nisn','$tempatlahir','$tgllahir','$agama','$gender','$alamatpendaftar','$nohppendaftar','$tgldaftar','$asalsekolah','$setarakelas','$paketkesetaraan','$alamatsekolah','$namaayah','$namaibu','$pekerjaanayah','$pekerjaanibu','$alamatortu','$namawali','$pekerjaanwali','$alamatwali','$nohportu_wali','$varfoto','Belum Diterima','$varakte','$varkk','$varijazah','$varsuratpindah')";
-     $result2 = mysqli_query($connect,$query2);
-    //var_dump($result2);
-     if ($result2) {
-       //echo "berhasil"; 
-      echo "<script>alert('Berhasil daftar');document.location.href='pendaftar/info_pendaftar.php'</script>";
-  } else {
-    //echo "gagal";
-    echo "<script>alert('Gagal daftar');document.location.href='daftar.php'</script>";
-  }
-  } else {
-    //echo "gagal upload";
-    echo "<script>alert('File gagal diupload');document.location.href='daftar.php'</script>";
-  }
+    $tgldaftar      = date("Ymd");
+    $varakte        = $_FILES["fileakta"]["name"].$newID;
+    $varkk          = $_FILES["filekk"]["name"].$newID;
+    $varijazah      = $_FILES["fileijazah"]["name"].$newID;
+    $varrapot       = $_FILES["filerapot"]["name"].$newID;
+    $varsuratpindah = $_FILES["file_skpindah"]["name"].$newID;
+    $varfoto        = $_FILES["file_foto"]["name"].$newID;
+
+    move_uploaded_file($_FILES["fileakta"]["tmp_name"],"file_pendaftar/".$_FILES["fileakta"]["name"].$newID);
+    move_uploaded_file($_FILES["filekk"]["tmp_name"],"file_pendaftar/".$_FILES["filekk"]["name"].$newID);
+    move_uploaded_file($_FILES["fileijazah"]["tmp_name"],"file_pendaftar/".$_FILES["fileijazah"]["name"].$newID);
+    move_uploaded_file($_FILES["filerapot"]["tmp_name"],"file_pendaftar/".$_FILES["filerapot"]["name"].$newID);
+    move_uploaded_file($_FILES["file_skpindah"]["tmp_name"],"file_pendaftar/".$_FILES["file_skpindah"]["name"].$newID);
+    move_uploaded_file($_FILES["file_foto"]["tmp_name"],"file_pendaftar/".$_FILES["file_foto"]["name"].$newID);
+
+
+
+    $queryvalidasinisn = "SELECT nisn from pendaftar where nisn = ".$nisn."";
+    $validasinisn = mysqli_query($connect,$queryvalidasinisn);
+    if (!$validasinisn)
+    {
+
+          $query2 = "INSERT INTO `pendaftar`(`no_pendaftar`, `nama`, `nisn`, `tempat_lhr`, `tanggal_lhr`, `agama`, `jenkel`, `alamat`, `no_hp`, `tgl_pendaftaran`, `asal_sekolah`, `setara_kelas`, `paket_kesetaraan`, `alamat_sekolah`, `nama_ayah`, `nama_ibu`, `pekerjaan_ayah`, `pekerjaan_ibu`, `alamat_ortu`, `nama_wali`, `pekerjaan_wali`, `alamat_wali`, `no_hp_ortuwali`, `foto`, `status_pendaftar`, `akte`, `kk`, `ijazah`, `raport_terakhir`, `sk_pindah_sekolah`) VALUES ('$newID','$namapendaftar','$nisn','$tempatlahir','$tgllahir','$agama','$gender','$alamatpendaftar','$nohppendaftar','$tgldaftar','$asalsekolah','$setarakelas','$paketkesetaraan','$alamatsekolah','$namaayah','$namaibu','$pekerjaanayah','$pekerjaanibu','$alamatortu','$namawali','$pekerjaanwali','$alamatwali','$nohportu_wali','$varfoto','Belum Diterima','$varakte','$varkk','$varijazah','$varrapot','$varsuratpindah')";
+          $result2 = mysqli_query($connect,$query2);
+        //var_dump($result2);
+          if ($result2) {
+            //echo "berhasil"; 
+            echo "<script>alert('Berhasil daftar');document.location.href='pendaftar/info_pendaftar.php'</script>";
+        } else {
+          //echo "gagal";
+          echo "<script>alert('Gagal daftar');document.location.href='daftar.php'</script>";
+        }
+        } else {
+          //echo "gagal upload";
+          echo "<script>alert('File gagal diupload');document.location.href='daftar.php'</script>";
+        }
+    }
+    else
+    {
+      echo "<script>alert('NISN sudah terdaftar')</script>";
+    }
 
 
 
@@ -117,4 +130,3 @@ if(isset($_POST["daftar"])){
         echo "<script>alert('Berhasil'); document.location.href='index.php'</script>";
     }
 }*/
-?>
